@@ -9,8 +9,10 @@ let reRigtotal = document.querySelector(".reRigtotal");
 let righttotal = document.querySelector(".Righttotal");
 let Righttotall = document.querySelector(".Righttotall");
 let Righttotalll = document.querySelector(".Righttotalll");
+let empty = document.querySelector(".empty");
 let interview = document.getElementById('Interview');
 let rejected = document.getElementById('Rejected'); 
+
 
 let interRigtotalbox = document.querySelector('.interRigtotalbox')
 let Righttotalbox = document.querySelector('.Righttotalbox')
@@ -40,7 +42,8 @@ function calculateCount(){
    
 }
    calculateCount()
-
+ 
+   
 
 function toggleStyle(id){
     allThrivingBtn.classList.add('bg-white','text-black')
@@ -57,6 +60,7 @@ function toggleStyle(id){
 
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-[#2563eb]','text-white')
+    
 
     if(id == 'interview-thriving-btn'){
       allcardsection.classList.add('hidden');
@@ -69,6 +73,9 @@ function toggleStyle(id){
       Righttotalbox.classList.add('hidden')
        reterRigtotalllbox.classList.remove('flex')
         reterRigtotalllbox.classList.add('hidden')
+        if( interviewlist.length === 0){
+          empty.classList.remove('hidden')
+         }
       // console.log(interRigtotalbox)
       renderInterview()
     }else if( id == "all-thriving-btn"){
@@ -81,6 +88,10 @@ function toggleStyle(id){
        interRigtotalbox.classList.add('hidden')
         reterRigtotalllbox.classList.remove('flex')
         reterRigtotalllbox.classList.add('hidden')
+         empty.classList.add('hidden')
+          if(allcardsection.children.length === 0){
+          empty.classList.remove('hidden')
+         }
 
     }else if(id=='rejected-thriving-btn'){
         allcardsection.classList.add('hidden')
@@ -92,9 +103,14 @@ function toggleStyle(id){
         Righttotalbox.classList.add('hidden')
         reterRigtotalllbox.classList.add('flex')
         reterRigtotalllbox.classList.remove('hidden')
+         empty.classList.add('hidden')
+          if(rejectedlist.length === 0){
+          empty.classList.remove('hidden')
+           }
        renderRejected();
     }
 }
+
 
 maincontriner.addEventListener('click',function(event){
    if(event.target.classList.contains('interviewBtn')){
@@ -244,7 +260,7 @@ function renderInterview(){
           ${interview.fectur}
          </div>
          <div class="buttondown  flex gap-3">
-          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
+          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >Interview</div>
           <div class="rejectedBtn border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
         filterSection.appendChild(div)
@@ -280,7 +296,7 @@ function renderRejected(){
           ${rejected.fectur}
          </div>
          <div class="buttondown  flex gap-3">
-          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
+          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >Interview</div>
           <div class="interviewBtn  border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
         rejecteded.appendChild(div)
