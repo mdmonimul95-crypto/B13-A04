@@ -164,7 +164,10 @@ maincontriner.addEventListener('click',function(event){
  }
    calculateCount()
 
-   }else if(event.target.classList.contains('rejectedBtn')){
+   }
+   console.log(event.target)
+   if(event.target.classList.contains('rejectedBtn')){
+    console.log('rejected')
      const parentNode = event.target.parentNode.parentNode;
     const companyName = parentNode.querySelector('.companyName').innerText
     const jobPosition = parentNode.querySelector('.jobposition').innerText
@@ -305,7 +308,7 @@ function renderRejected(){
          </div>
          <div class="buttondown  flex gap-3">
           <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >Interview</div>
-          <div class="interviewBtn  border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
+          <div class="rejectedBtn  border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
         rejecteded.appendChild(div)
         
