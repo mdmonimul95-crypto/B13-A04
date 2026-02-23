@@ -58,10 +58,10 @@
             <p class=" companyName font-semibold text-2xl my-2">Mobile First Corp</p>
             <p class="jobposition my-2">React Native Developer</p>
            </div>
-           <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
+           <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
             
              <img src="/Trash.png" alt="delete">
-           </div>
+           </button>
           </div>
           <div class="salary my-2">
               Remote • Full-time • $130,000 - $175,000
@@ -84,10 +84,11 @@
             <p class="companyName font-semibold text-2xl my-2">WebFlow Agency</p>
             <p class="jobposition my-2">Web Designer & Developer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+          
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="salary my-2">
           Los Angeles, CA• Part-time •$80,000 - $120,000
@@ -110,10 +111,11 @@
             <p class="companyName font-semibold text-2xl my-2">DataViz Solutions</p>
             <p class="jobposition my-2">Data Visualization Specialist</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+         
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="salary my-2">
           Boston, MA • Full-time • $125,000 - $165,000
@@ -136,10 +138,11 @@
             <p class="companyName font-semibold text-2xl my-2">CloudFirst Inc</p>
             <p class="jobposition my-2">Backend Developer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+         
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="salary my-2">
           Seattle, WA • Full-time • $140,000 - $190,000
@@ -162,10 +165,11 @@
             <p class="companyName font-semibold text-2xl my-2">Innovation Labs</p>
             <p class="jobposition my-2">UI/UX Engineer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+         
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="salary my-2">
           Austin, TX • Full-time • $110,000 - $150,000
@@ -188,10 +192,11 @@
             <p class="companyName font-semibold text-2xl my-2">MegaCorp Solutions</p>
             <p class="jobposition my-2"> JavaScript Developer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+         
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="my-2 salary">
           New York, NY • Full-time • $130,000 - $170,00
@@ -214,10 +219,11 @@
             <p class="companyName font-semibold text-2xl my-2">StartupXYZ</p>
             <p class="jobposition my-2">Full Stack Engineer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+          
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="my-2 salary">
           Remote • Full-time • $120,000 - $160,000
@@ -240,10 +246,11 @@
             <p class="companyName font-semibold text-2xl my-2">TechCorp Industries</p>
             <p class="jobposition my-2">Senior Frontend Developer</p>
           </div>
-          <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
-            <!-- <i class="fa-regular fa-trash-can  "></i> -->
+          
+          <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
+            
              <img src="/Trash.png" alt="delete">
-          </div>
+           </button>
         </div>
         <div class="my-2 salary">
           San Francisco, CA • Full-time • $130,000 - $175,000
@@ -262,5 +269,10 @@
      </section>
     </main>
     <script src="script.js"></script>
+    <script>
+     function deleteCard(button) {
+     button.parentNode.parentNode.remove();
+     }
+    </script>
 </body>
 </html>
