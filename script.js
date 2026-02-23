@@ -60,7 +60,7 @@ function toggleStyle(id){
 
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-[#2563eb]','text-white')
-    
+     empty.classList.add('hidden')
 
     if(id == 'interview-thriving-btn'){
       allcardsection.classList.add('hidden');
@@ -73,9 +73,9 @@ function toggleStyle(id){
       Righttotalbox.classList.add('hidden')
        reterRigtotalllbox.classList.remove('flex')
         reterRigtotalllbox.classList.add('hidden')
-        if( interviewlist.length === 0){
-          empty.classList.remove('hidden')
-         }
+        // if( interviewlist.length === 0){
+        //   empty.classList.remove('hidden')
+        //  }
       // console.log(interRigtotalbox)
       renderInterview()
     }else if( id == "all-thriving-btn"){
@@ -89,9 +89,9 @@ function toggleStyle(id){
         reterRigtotalllbox.classList.remove('flex')
         reterRigtotalllbox.classList.add('hidden')
          empty.classList.add('hidden')
-          if(allcardsection.children.length === 0){
-          empty.classList.remove('hidden')
-         }
+        //   if(allcardsection.children.length === 0){
+        //   empty.classList.remove('hidden')
+        //  }
 
     }else if(id=='rejected-thriving-btn'){
         allcardsection.classList.add('hidden')
@@ -104,9 +104,9 @@ function toggleStyle(id){
         reterRigtotalllbox.classList.add('flex')
         reterRigtotalllbox.classList.remove('hidden')
          empty.classList.add('hidden')
-          if(rejectedlist.length === 0){
-          empty.classList.remove('hidden')
-           }
+          // if(rejectedlist.length === 0){
+          // empty.classList.remove('hidden')
+          //  }
        renderRejected();
     }
 }
@@ -122,6 +122,7 @@ maincontriner.addEventListener('click',function(event){
     const notApplied = parentNode.querySelector('.notapplied').innerText
     const fectur = parentNode.querySelector('.fectur').innerText
     const buttondown  = parentNode.querySelector('.buttondown').innerText
+    
 
     const el = parentNode.querySelector('.notapplied')
 
@@ -158,9 +159,9 @@ maincontriner.addEventListener('click',function(event){
     renderInterview();
  rejectedlist = rejectedlist.filter(item=> item.companyName!=cardinfo.companyName)
 //  console.log(rejectedlist)
-//  if(currentstatus =='rejected-thriving-btn'){
+ if(currentstatus =='rejected-thriving-btn'){
       renderRejected()
-//  }
+ }
    calculateCount()
 
    }else if(event.target.classList.contains('rejectedBtn')){
@@ -172,6 +173,7 @@ maincontriner.addEventListener('click',function(event){
     const notApplied = parentNode.querySelector('.notapplied').innerText
     const fectur = parentNode.querySelector('.fectur').innerText
     const buttondown  = parentNode.querySelector('.buttondown').innerText
+    
 
     const el = parentNode.querySelector('.notapplied')
 
@@ -220,6 +222,9 @@ maincontriner.addEventListener('click',function(event){
 //   }
 
 function renderInterview(){
+  if( interviewlist.length === 0){
+          empty.classList.remove('hidden')
+         }
     filterSection.innerHTML = ''
     for(let interview of interviewlist){
 
@@ -269,6 +274,9 @@ function renderInterview(){
 }
 
 function renderRejected(){
+  if( rejectedlist.length === 0){
+          empty.classList.remove('hidden')
+         }
     rejecteded.innerHTML = ''
     for(let rejected of rejectedlist){
         // console.log(interview);
