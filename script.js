@@ -188,11 +188,11 @@ function renderInterview(){
               <p class="companyName font-semibold text-2xl my-2">${interview.companyName}</p>
               <p class="my-2 jobposition">${interview.jobPosition}</p>
             </div>
-            <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
+            
+            <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
             
              <img src="/Trash.png" alt="delete">
-
-            </div>
+           </button>
           </div>
           <div class="salary my-2">
           ${interview.salaryIdea}
@@ -224,10 +224,11 @@ function renderRejected(){
             <p class="companyName font-semibold text-2xl my-2">${rejected.companyName}</p>
             <p class="my-2 jobposition">${rejected.jobPosition}</p>
            </div>
-           <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
+           
+           <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
             
              <img src="/Trash.png" alt="delete">
-           </div>
+           </button>
           </div>
           <div class="salary my-2">
           ${rejected.salaryIdea}
