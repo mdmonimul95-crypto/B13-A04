@@ -1,6 +1,6 @@
 let interviewlist = [];
 let rejectedlist = [];
-let currentstatus = 'all'
+let currentstatus = 'all';
 
 let total = document.getElementById('Total');
 let interview = document.getElementById('Interview');
@@ -9,7 +9,7 @@ let rejected = document.getElementById('Rejected');
 const allcardsection = document.getElementById('allcards');
 const maincontriner = document.querySelector('main')
 const filterSection = document.getElementById('filter-section')
-
+const rejecteded = document.getElementById('rejecteded')
 const allThrivingBtn = document.getElementById('all-thriving-btn')
 const interviewThrivingBtn = document.getElementById('interview-thriving-btn')
 const rejectedThrivingBtn = document.getElementById('rejected-thriving-btn')
@@ -34,20 +34,24 @@ function toggleStyle(id){
 
     const selected = document.getElementById(id)
     currentstatus = id
+    console.log(currentstatus);
 
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-[#2563eb]','text-white')
 
     if(id == 'interview-thriving-btn'){
-      allcardsection.classList.add('hidden')
+      allcardsection.classList.add('hidden');
+      rejecteded.classList.add('hidden')
       filterSection.classList.remove('hidden')
       renderInterview()
     }else if( id == "all-thriving-btn"){
        allcardsection.classList.remove('hidden')
       filterSection.classList.add('hidden')
+      rejecteded.classList.add('hidden')
     }else if(id=='rejected-thriving-btn'){
         allcardsection.classList.add('hidden')
-       filterSection.classList.remove('hidden')
+       filterSection.classList.add('hidden')
+       rejecteded.classList.remove('hidden')
        renderRejected();
     }
 }
@@ -62,8 +66,14 @@ maincontriner.addEventListener('click',function(event){
     const notApplied = parentNode.querySelector('.notapplied').innerText
     const fectur = parentNode.querySelector('.fectur').innerText
     const buttondown  = parentNode.querySelector('.buttondown').innerText
+
+    const el = parentNode.querySelector('.notapplied')
+
+     el.innerText = 'Interview'
+     el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
+     el.classList.add('bg-white', 'text-green-500','border-green-500','border-2')
     
-    parentNode.querySelector('.notapplied').innerText ='Interview'
+    // parentNode.querySelector('.notapplied').innerText ='Interview'
 
  
  const cardinfo ={
@@ -71,6 +81,7 @@ maincontriner.addEventListener('click',function(event){
     jobPosition,
     salaryIdea,
     notApplied:'Interview',
+    // notApplied,
     fectur,
     buttondown,
 
@@ -85,12 +96,14 @@ maincontriner.addEventListener('click',function(event){
  if(!companyExist){
    interviewlist.push(cardinfo) 
  }
-  calculateCount()
+  console.log(interviewlist)
+    renderInterview();
  rejectedlist = rejectedlist.filter(item=> item.companyName!=cardinfo.companyName)
- if(currentstatus =='rejected-thriving-btn'){
+ console.log(rejectedlist)
+//  if(currentstatus =='rejected-thriving-btn'){
       renderRejected()
- }
- 
+//  }
+   calculateCount()
 
    }else if(event.target.classList.contains('rejectedBtn')){
      const parentNode = event.target.parentNode.parentNode;
@@ -101,22 +114,29 @@ maincontriner.addEventListener('click',function(event){
     const notApplied = parentNode.querySelector('.notapplied').innerText
     const fectur = parentNode.querySelector('.fectur').innerText
     const buttondown  = parentNode.querySelector('.buttondown').innerText
-    
-    parentNode.querySelector('.notapplied').innerText ='Rejected'
 
+    const el = parentNode.querySelector('.notapplied')
+
+     el.innerText = 'Rejected'
+     el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
+     el.classList.add('bg-white', 'text-red-500','border-red-500','border-2')
+    
+    // parentNode.querySelector('.notapplied').innerText ='Rejected'
+   
  
  const cardinfo ={
     companyName,
     jobPosition,
     salaryIdea,
     notApplied:'Rejected',
+    // notApplied,
     fectur,
     buttondown,
 
 
  }
 
- const companyExist = rejectedlist.find(item=> item.companyName==cardinfo.companyName)
+ const companyExist = rejectedlist.find(item => item.companyName == cardinfo.companyName)
 
  
  
@@ -124,13 +144,14 @@ maincontriner.addEventListener('click',function(event){
  if(!companyExist){
    rejectedlist.push(cardinfo) 
  }
-  calculateCount()
-  interviewlist = interviewlist.filter(item=> item.companyName!=cardinfo.companyName)
-  if(currentstatus =='interview-thriving-btn'){
+   renderRejected()
+  interviewlist = interviewlist.filter(item => item.companyName != cardinfo.companyName)
+
+  if(currentstatus == 'interview-thriving-btn'){
     renderInterview();
   }
 
-
+    calculateCount()
    }
 
 })
@@ -147,7 +168,20 @@ maincontriner.addEventListener('click',function(event){
 function renderInterview(){
     filterSection.innerHTML = ''
     for(let interview of interviewlist){
-        // console.log(interview)
+
+        console.log(interview);
+         let statusClass = ""
+
+          if (interview.notApplied === "Interview") {
+           statusClass = "border-2 border-green-500 text-green-500"
+           }
+           else if (interview.notApplied === "Rejected") {
+           statusClass = "border-2 border-red-500 text-red-500"
+           }
+           else {
+             statusClass = "border-2 border-[#EEF4FF] text-black"
+            }
+
         let div = document.createElement('div');
         div.className ='bg-white p-5  rounded-sm '
         div.innerHTML = `
@@ -164,7 +198,7 @@ function renderInterview(){
           <div class="salary my-2">
           ${interview.salaryIdea}
           </div>
-          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  border-2  border-[#EEF4FF]  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
             ${interview.notApplied}
          </div>
          <div class="fectur my-2">
@@ -180,9 +214,9 @@ function renderInterview(){
 }
 
 function renderRejected(){
-    filterSection.innerHTML = ''
+    rejecteded.innerHTML = ''
     for(let rejected of rejectedlist){
-        // console.log(interview)
+        console.log(interview);
         let div = document.createElement('div');
         div.className ='bg-white p-5  rounded-sm '
         div.innerHTML = `
@@ -199,7 +233,7 @@ function renderRejected(){
           <div class="salary my-2">
           ${rejected.salaryIdea}
           </div>
-          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  border-2  border-[#EEF4FF]  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
             ${rejected.notApplied}
          </div>
          <div class="fectur my-2">
@@ -209,7 +243,7 @@ function renderRejected(){
           <div class="border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
           <div class="border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
-        filterSection.appendChild(div)
+        rejecteded.appendChild(div)
         
     }
 }
