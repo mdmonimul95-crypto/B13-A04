@@ -2,11 +2,22 @@ let interviewlist = [];
 let rejectedlist = [];
 let currentstatus = 'all';
 
-let total = document.getElementById('Total');
+
+let total = document.querySelector(".Total");
+let interRigtotal = document.querySelector(".interRigtotal");
+let reRigtotal = document.querySelector(".reRigtotal");
+let righttotal = document.querySelector(".Righttotal");
+let Righttotall = document.querySelector(".Righttotall");
+let Righttotalll = document.querySelector(".Righttotalll");
 let interview = document.getElementById('Interview');
 let rejected = document.getElementById('Rejected'); 
 
+let interRigtotalbox = document.querySelector('.interRigtotalbox')
+let Righttotalbox = document.querySelector('.Righttotalbox')
+let reterRigtotalllbox = document.querySelector('.interRigtotalllbox')
+
 const allcardsection = document.getElementById('allcards');
+// console.log(allcardsection.children.length)
 const maincontriner = document.querySelector('main')
 const filterSection = document.getElementById('filter-section')
 const rejecteded = document.getElementById('rejecteded')
@@ -16,11 +27,19 @@ const rejectedThrivingBtn = document.getElementById('rejected-thriving-btn')
 
 
 function calculateCount(){
+
+   interRigtotal.innerText = interviewlist.length;
+   reRigtotal.innerText = rejectedlist.length;
    total.innerText = allcardsection.children.length;
+   righttotal.innerText = allcardsection.children.length;
+   Righttotall.innerText = allcardsection.children.length;
+   Righttotalll.innerText = allcardsection.children.length;
    interview.innerText = interviewlist.length
    
    rejected.innerText = rejectedlist.length
+   
 }
+   calculateCount()
 
 
 function toggleStyle(id){
@@ -43,15 +62,36 @@ function toggleStyle(id){
       allcardsection.classList.add('hidden');
       rejecteded.classList.add('hidden')
       filterSection.classList.remove('hidden')
+      // console.log(interRigtotalbox)
+      interRigtotalbox.classList.remove('hidden')
+      interRigtotalbox.classList.add('flex')
+      Righttotalbox.classList.remove('flex')
+      Righttotalbox.classList.add('hidden')
+       reterRigtotalllbox.classList.remove('flex')
+        reterRigtotalllbox.classList.add('hidden')
+      // console.log(interRigtotalbox)
       renderInterview()
     }else if( id == "all-thriving-btn"){
        allcardsection.classList.remove('hidden')
       filterSection.classList.add('hidden')
       rejecteded.classList.add('hidden')
+       Righttotalbox.classList.remove('hidden')
+       Righttotalbox.classList.add('flex')
+       interRigtotalbox.classList.remove('flex')
+       interRigtotalbox.classList.add('hidden')
+        reterRigtotalllbox.classList.remove('flex')
+        reterRigtotalllbox.classList.add('hidden')
+
     }else if(id=='rejected-thriving-btn'){
         allcardsection.classList.add('hidden')
        filterSection.classList.add('hidden')
        rejecteded.classList.remove('hidden')
+       interRigtotalbox.classList.remove('flex')
+       interRigtotalbox.classList.add('hidden')
+        Righttotalbox.classList.remove('flex')
+        Righttotalbox.classList.add('hidden')
+        reterRigtotalllbox.classList.add('flex')
+        reterRigtotalllbox.classList.remove('hidden')
        renderRejected();
     }
 }
@@ -70,10 +110,10 @@ maincontriner.addEventListener('click',function(event){
     const el = parentNode.querySelector('.notapplied')
 
      el.innerText = 'Interview'
-     el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
+     el.classList.remove('bg-[#EEF4FF]','px-2','text-black','border-[#EEF4FF]','border-2')
      
       el.classList.remove('bg-white', 'text-red-500','border-red-500','border-2')
-      el.classList.add('bg-white', 'text-green-500','border-green-500','border-2')
+      el.classList.add('bg-white', 'text-green-500','border-green-500','border-2','px-5')
     
     // parentNode.querySelector('.notapplied').innerText ='Interview'
 
@@ -120,9 +160,9 @@ maincontriner.addEventListener('click',function(event){
     const el = parentNode.querySelector('.notapplied')
 
      el.innerText = 'Rejected'
-     el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
-      el.classList.remove('bg-white', 'text-green-500','border-green-500','border-2')
-     el.classList.add('bg-white', 'text-red-500','border-red-500','border-2')
+     el.classList.remove('bg-[#EEF4FF]','px-2','text-black','border-[#EEF4FF]','border-2')
+      el.classList.remove('bg-white','text-green-500','border-green-500','border-2')
+     el.classList.add('bg-white', 'text-red-500','border-red-500','border-2','px-5')
     
     // parentNode.querySelector('.notapplied').innerText ='Rejected'
    
@@ -197,7 +237,7 @@ function renderInterview(){
           <div class="salary my-2">
           ${interview.salaryIdea}
           </div>
-          <div class="notapplied text-green-500 px-2 pb-1  border-2  border-green-500  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied text-green-500 px-5 pb-1  border-2  border-green-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
             ${interview.notApplied}
          </div>
          <div class="fectur my-2"> 
@@ -233,7 +273,7 @@ function renderRejected(){
           <div class="salary my-2">
           ${rejected.salaryIdea}
           </div>
-          <div class="notapplied bg-white px-2 pb-1  text-red-500  border-2  border-red-500  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied bg-white px-5 pb-1  text-red-500  border-2  border-red-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
             ${rejected.notApplied}
          </div>
          <div class="fectur my-2">
