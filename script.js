@@ -34,7 +34,7 @@ function toggleStyle(id){
 
     const selected = document.getElementById(id)
     currentstatus = id
-    console.log(currentstatus);
+    // console.log(currentstatus);
 
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-[#2563eb]','text-white')
@@ -71,7 +71,9 @@ maincontriner.addEventListener('click',function(event){
 
      el.innerText = 'Interview'
      el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
-     el.classList.add('bg-white', 'text-green-500','border-green-500','border-2')
+     
+      el.classList.remove('bg-white', 'text-red-500','border-red-500','border-2')
+      el.classList.add('bg-white', 'text-green-500','border-green-500','border-2')
     
     // parentNode.querySelector('.notapplied').innerText ='Interview'
 
@@ -96,10 +98,10 @@ maincontriner.addEventListener('click',function(event){
  if(!companyExist){
    interviewlist.push(cardinfo) 
  }
-  console.log(interviewlist)
+  // console.log(interviewlist)
     renderInterview();
  rejectedlist = rejectedlist.filter(item=> item.companyName!=cardinfo.companyName)
- console.log(rejectedlist)
+//  console.log(rejectedlist)
 //  if(currentstatus =='rejected-thriving-btn'){
       renderRejected()
 //  }
@@ -119,6 +121,7 @@ maincontriner.addEventListener('click',function(event){
 
      el.innerText = 'Rejected'
      el.classList.remove('bg-[#EEF4FF]', 'text-black','border-[#EEF4FF]','border-2')
+      el.classList.remove('bg-white', 'text-green-500','border-green-500','border-2')
      el.classList.add('bg-white', 'text-red-500','border-red-500','border-2')
     
     // parentNode.querySelector('.notapplied').innerText ='Rejected'
@@ -129,21 +132,16 @@ maincontriner.addEventListener('click',function(event){
     jobPosition,
     salaryIdea,
     notApplied:'Rejected',
-    // notApplied,
     fectur,
     buttondown,
-
-
  }
 
  const companyExist = rejectedlist.find(item => item.companyName == cardinfo.companyName)
 
- 
- 
-
  if(!companyExist){
    rejectedlist.push(cardinfo) 
  }
+ console.log(rejectedlist)
    renderRejected()
   interviewlist = interviewlist.filter(item => item.companyName != cardinfo.companyName)
 
@@ -169,44 +167,45 @@ function renderInterview(){
     filterSection.innerHTML = ''
     for(let interview of interviewlist){
 
-        console.log(interview);
-         let statusClass = ""
+        // console.log(interview);
+        //  let statusClass = ""
 
-          if (interview.notApplied === "Interview") {
-           statusClass = "border-2 border-green-500 text-green-500"
-           }
-           else if (interview.notApplied === "Rejected") {
-           statusClass = "border-2 border-red-500 text-red-500"
-           }
-           else {
-             statusClass = "border-2 border-[#EEF4FF] text-black"
-            }
+        //   if (interview.notApplied === "Interview") {
+        //    statusClass = "border-2 border-green-500 text-green-500"
+        //    }
+        //    else if (interview.notApplied === "Rejected") {
+        //    statusClass = "border-2 border-red-500 text-red-500"
+        //    }
+        //    else {
+        //      statusClass = "border-2 border-[#EEF4FF] text-black"
+        //     }
 
         let div = document.createElement('div');
         div.className ='bg-white p-5  rounded-sm '
         div.innerHTML = `
         <div class="  flex justify-between">
             <div>
-            <p class=" font-semibold text-2xl my-2">${interview.companyName}</p>
-            <p class="my-2">${interview.jobPosition}</p>
-           </div>
-           <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
+              <p class="companyName font-semibold text-2xl my-2">${interview.companyName}</p>
+              <p class="my-2 jobposition">${interview.jobPosition}</p>
+            </div>
+            <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
             
              <img src="/Trash.png" alt="delete">
-           </div>
+
+            </div>
           </div>
           <div class="salary my-2">
           ${interview.salaryIdea}
           </div>
-          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  border-2  border-[#EEF4FF]  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied text-green-500 px-2 pb-1  border-2  border-green-500  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
             ${interview.notApplied}
          </div>
-         <div class="fectur my-2">
+         <div class="fectur my-2"> 
           ${interview.fectur}
          </div>
          <div class="buttondown  flex gap-3">
-          <div class="border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
-          <div class="border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
+          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
+          <div class="rejectedBtn border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
         filterSection.appendChild(div)
         
@@ -216,14 +215,14 @@ function renderInterview(){
 function renderRejected(){
     rejecteded.innerHTML = ''
     for(let rejected of rejectedlist){
-        console.log(interview);
+        // console.log(interview);
         let div = document.createElement('div');
         div.className ='bg-white p-5  rounded-sm '
         div.innerHTML = `
         <div class="  flex justify-between">
             <div>
-            <p class=" font-semibold text-2xl my-2">${rejected.companyName}</p>
-            <p class="my-2">${rejected.jobPosition}</p>
+            <p class="companyName font-semibold text-2xl my-2">${rejected.companyName}</p>
+            <p class="my-2 jobposition">${rejected.jobPosition}</p>
            </div>
            <div class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 ">
             
@@ -233,15 +232,15 @@ function renderRejected(){
           <div class="salary my-2">
           ${rejected.salaryIdea}
           </div>
-          <div class="notapplied bg-[#EEF4FF] px-2 pb-1  border-2  border-[#EEF4FF]  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
+          <div class="notapplied bg-white px-2 pb-1  text-red-500  border-2  border-red-500  my-2 py1 w-[15%] text-2xl font-semibold rounded-lg  ">
             ${rejected.notApplied}
          </div>
          <div class="fectur my-2">
           ${rejected.fectur}
          </div>
          <div class="buttondown  flex gap-3">
-          <div class="border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
-          <div class="border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
+          <div class="interviewBtn  border-2 border-green-500 text-green-500 px-4  rounded text-2xl pb-1" >interview</div>
+          <div class="interviewBtn  border-2 border-red-500 text-red-500 px-4 rounded text-2xl pb-1" >Rejected</div>
         </div>`
         rejecteded.appendChild(div)
         
