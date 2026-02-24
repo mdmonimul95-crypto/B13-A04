@@ -18,7 +18,8 @@
                         * it gives all matching element.
                         * It can return NodeList.
                         * It can return static nodelist.
-                        * If i use it  , i must use at first fullstop in quotation (". ") or ('. ').
+                        * If i use it by class , i must use at first fullstop in quotation (". ") or ('. ').
+                        * If i use it by id , i must use at first # in quotation ("# ") or ('# ').
 
 
 2  At first, I will write code ( let newDiv = document.createElement("div"))
