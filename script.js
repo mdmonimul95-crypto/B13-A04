@@ -129,8 +129,8 @@ maincontriner.addEventListener('click',function(event){
      el.innerText = 'Interview'
      el.classList.remove('bg-[#EEF4FF]','px-2','text-black','border-[#EEF4FF]','border-2')
      
-      el.classList.remove('bg-white', 'text-red-500','border-red-500','border-2')
-      el.classList.add('bg-white', 'text-green-500','border-green-500','border-2','px-5')
+      el.classList.remove('bg-red-100', 'text-red-500','border-red-500','border-2')
+      el.classList.add('bg-green-100', 'text-green-500','border-green-500','border-2','px-5')
     
     // parentNode.querySelector('.notapplied').innerText ='Interview'
 
@@ -182,8 +182,8 @@ maincontriner.addEventListener('click',function(event){
 
      el.innerText = 'Rejected'
      el.classList.remove('bg-[#EEF4FF]','px-2','text-black','border-[#EEF4FF]','border-2')
-      el.classList.remove('bg-white','text-green-500','border-green-500','border-2')
-     el.classList.add('bg-white', 'text-red-500','border-red-500','border-2','px-5')
+      el.classList.remove('bg-green-100','text-green-500','border-green-500','border-2')
+     el.classList.add('bg-red-100', 'text-red-500','border-red-500','border-2','px-5')
     
     // parentNode.querySelector('.notapplied').innerText ='Rejected'
    
@@ -261,7 +261,7 @@ function renderInterview(){
           <div class="salary my-2">
           ${interview.salaryIdea}
           </div>
-          <div class="notapplied text-green-500 px-5 pb-1  border-2  border-green-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
+          <div class="notapplied bg-green-100 text-green-500 px-5 pb-1  border-2  border-green-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
             ${interview.notApplied}
          </div>
          <div class="fectur my-2"> 
@@ -300,7 +300,7 @@ function renderRejected(){
           <div class="salary my-2">
           ${rejected.salaryIdea}
           </div>
-          <div class="notapplied bg-white px-5 pb-1  text-red-500  border-2  border-red-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
+          <div class="notapplied bg-red-100 px-5 pb-1  text-red-500  border-2  border-red-500  my-2 py1  w-[120px] text-[110%] font-semibold rounded-lg  ">
             ${rejected.notApplied}
          </div>
          <div class="fectur my-2">
