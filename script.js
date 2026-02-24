@@ -255,7 +255,7 @@ function renderInterview(){
             
             <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
             
-             <img src="/Trash.png" alt="delete">
+             <img src="./Trash.png" alt="delete">
            </button>
           </div>
           <div class="salary my-2">
@@ -294,7 +294,7 @@ function renderRejected(){
            
            <button class="p-1 border-1  rounded-full  border-gray-300  py-1 my-7 "  onclick="deleteCard(this)">
             
-             <img src="/Trash.png" alt="delete">
+             <img src="./Trash.png" alt="delete">
            </button>
           </div>
           <div class="salary my-2">
